@@ -1,8 +1,8 @@
-# Stanford University (cs193p): Developing iOS 11 Apps with Swift 4
+# Stanford University (CS193P): Developing iOS 11 Apps with Swift 4
 
 <img src="https://is3-ssl.mzstatic.com/image/thumb/course/CobaltPublic128/v4/81/d0/9c/81d09ca1-ec7b-19b2-a215-4ae39df215c5/source/168x214.png" width="100">
 
-This repo keeps track of my progress on following Stanford's cs193p course (resources dated 2017-18).
+This repo keeps track of my progress on following Stanford's CS193P course (resources dated 2017-18).
 
 # Concentration
 
