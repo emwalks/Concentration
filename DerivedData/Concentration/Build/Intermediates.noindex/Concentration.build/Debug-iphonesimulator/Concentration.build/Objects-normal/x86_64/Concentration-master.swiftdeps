@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
-options: "6e966b58e423429dff9113f9a00fb00e"
-build_time: [1564751098, 172981000]
-inputs:
-  "/Users/walkee28/Developer/Concentration/Concentration/ViewController.swift": [1564751094, 922311295]
-  "/Users/walkee28/Developer/Concentration/Concentration/Supporting Files/AppDelegate.swift": [1564735462, 988320487]
