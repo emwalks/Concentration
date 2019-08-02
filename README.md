@@ -4,7 +4,7 @@
 
 This repo keeps track of my progress on following Stanford's CS193P course (resources dated 2017-18).
 
-# Concentration
+## Concentration
 
 Project 1: Creating a card flipping game to match pairs
 
