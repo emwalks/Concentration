@@ -6,6 +6,6 @@ This repo keeps track of my progress on following Stanford's CS193P course (reso
 
 ## Concentration
 
-Project 1: Creating a card flipping game to match pairs
+### Project 1: Creating a card flipping game to match pairs
 
 Created in Xcode 10

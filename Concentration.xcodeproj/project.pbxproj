@@ -12,6 +12,8 @@
 		986C0A7E22F42F6600A084C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986C0A7C22F42F6600A084C1 /* Main.storyboard */; };
 		986C0A8022F42F6700A084C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 986C0A7F22F42F6700A084C1 /* Assets.xcassets */; };
 		986C0A8322F42F6700A084C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 986C0A8122F42F6700A084C1 /* LaunchScreen.storyboard */; };
+		986C0A8D22F47A1600A084C1 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986C0A8C22F47A1600A084C1 /* Concentration.swift */; };
+		986C0A8F22F47BB000A084C1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986C0A8E22F47BB000A084C1 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		986C0A7F22F42F6700A084C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		986C0A8222F42F6700A084C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		986C0A8422F42F6700A084C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		986C0A8C22F47A1600A084C1 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		986C0A8E22F47BB000A084C1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				986C0A7A22F42F6600A084C1 /* ViewController.swift */,
 				986C0A7C22F42F6600A084C1 /* Main.storyboard */,
+				986C0A8C22F47A1600A084C1 /* Concentration.swift */,
+				986C0A8E22F47BB000A084C1 /* Card.swift */,
 				986C0A8422F42F6700A084C1 /* Info.plist */,
 				986C0A8B22F4432400A084C1 /* Supporting Files */,
 			);
@@ -145,6 +151,8 @@
 			files = (
 				986C0A7B22F42F6600A084C1 /* ViewController.swift in Sources */,
 				986C0A7922F42F6600A084C1 /* AppDelegate.swift in Sources */,
+				986C0A8D22F47A1600A084C1 /* Concentration.swift in Sources */,
+				986C0A8F22F47BB000A084C1 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

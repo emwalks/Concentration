@@ -16,6 +16,12 @@ import UIKit
 class ViewController: UIViewController
 {
     
+    //this var game is the link from my Controller here to the Model held in Concentration.swift
+    //the lazy var allows us to wait to initilise this var until cardButtons has been initialised
+    //a lazy var cannot have property observer
+    
+    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
+    
     //you can add a property observer to any property to update and execute code e.g. didSet
     
     var flipCount = 0 {
@@ -35,40 +41,43 @@ class ViewController: UIViewController
     
     @IBOutlet var cardButtons: [UIButton]!
     
-    var emojiChoices = ["👻", "🎃", "🎃" ,"👻"]
-    
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
        
         //the index of sender unwraps the optional
        // add an if here because index of returns an optional. So if optional is not set (nil) program won't crash
+        //we have re-written this from Lecture 1 to allow the model handle what happens when a card is chosen
+        //now we need to update view with the model
         
         if let cardNumber = cardButtons.index(of: sender){
-            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
         } else {
             print("chosen card not in card buttons")
+        }
+    }
+    
+    //indices gives a countable range from the array
+    //this func is going to look at the array of cards in Concentration and make sure the card buttons match in the UI based on game parameters
+    
+    func updateViewFromModel(){
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            if card.isFaceUp {
+                button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                button.setTitle("", for: UIControl.State.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+            }
+        }
+    }
+        
+        var emojiChoices = ["👻", "🎃", "🦇" ,"😈"]
 
+        func emoji(for card: Card) -> String {
+            return "?"
         }
     }
-    
-    //this is a function with 2 parameters emoji type string and button type UI button
-    //the external names for these arguments are withEmoji and on
-    //this function will be used when touchCard is executed
-    //the function checks if the text of the card (currentTitle) is an emoji (ie face up). if it is it sets the title to blank and the background to orange
-    //else it flips it face up
-    
-    func flipCard(withEmoji emoji:String, on button: UIButton){
-        
-        //light debugging to see when a card is clicked which emoji is being used:
-        //print("flipCard(withEmoji: \(emoji))")
-        
-        if button.currentTitle == emoji {
-            button.setTitle("", for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
-        } else {
-            button.setTitle(emoji, for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
-    }
-}
 
