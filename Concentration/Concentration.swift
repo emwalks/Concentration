@@ -17,15 +17,43 @@ class Concentration {
     
     var cards = [Card]()
     
+    //this var is to keep track of when only one card is face up
+    //this is optional because if there are more than one single card face up the index will be nil
     
-    //this function changes the state of isFaceUp from false to true - i.e. it will now flip the card. the visual component for this is in the controller - updateViewFromModel
+    var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
-        if cards[index].isFaceUp {
-            cards[index].isFaceUp = false
-        } else {
-            cards[index].isFaceUp = true
+
+        //! = opposite of the statement
+        //if the card you have chosen is not already matched then do this
+        
+        if !cards[index].isMatched{
+            // this is saying if a variable called matchIndex
+            // and  index does not equal matchIndex - i.e. you haven't touched the same card
+            
+            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
+                
+                //check if cards match and then mark as matched
+                
+                if cards[matchIndex].identifier == cards[index].identifier {
+                    cards[matchIndex].isMatched = true
+                    cards[index].isMatched = true
+                }
+                cards[index].isFaceUp = true
+                indexOfOneAndOnlyFaceUpCard = nil
+           
+            } else {
+                
+                // either no cards or 2 cards are face up
+                
+                for flipDpwnIndex in cards.indices {
+                    cards[flipDpwnIndex].isFaceUp = false
+                }
+                cards[index].isFaceUp = true
+                indexOfOneAndOnlyFaceUpCard = index
+            }
         }
+        
     }
     
     //because we are passing structs around we are already copying cards so we only need a card, not a second matching card. And we can pass two into the array (which again is a struct which will be copied.
@@ -36,7 +64,7 @@ class Concentration {
             cards += [card, card]
         }
         
-        //HOMEWORK shuffle the cards
+        // TODO: HOMEWORK shuffle the cards and add a reset game button
     }
     
 }
