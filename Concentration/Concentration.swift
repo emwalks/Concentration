@@ -60,11 +60,16 @@ class Concentration {
     
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
-            let card = Card()
+           let card = Card()
             cards += [card, card]
+            
+            // this shuffles the array:
+
+            cards.shuffle()
+        
         }
         
-        // TODO: HOMEWORK shuffle the cards and add a reset game button
+        // TODO: add a reset game button
     }
     
 }
