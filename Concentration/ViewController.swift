@@ -20,11 +20,7 @@ class ViewController: UIViewController
     //the lazy var allows us to wait to initilise this var until cardButtons has been initialised
     //a lazy var cannot have property observer
     
-    @IBAction func resetGame(_ sender: UIButton) {
-        //some code that resets the game
-        print("You clicked reset game")
-    }
-    
+
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
     
     //you can add a property observer to any property to update and execute code e.g. didSet
@@ -81,7 +77,8 @@ class ViewController: UIViewController
             }
         }
     }
-        
+    
+    
     var emojiChoices = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
 
     //we are going to use a dictionary for this. a dictionary is a data structure where you can look something up and retireve a value
@@ -113,5 +110,19 @@ class ViewController: UIViewController
         return emoji[card.identifier] ?? "?"
         
         }
+    
+    @IBAction func resetGame(_ sender: UIButton) {
+        //some code that resets the game
+
+        game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
+        emojiChoices = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
+        flipCount = 0
+        updateViewFromModel()
+        //need to reset: game, emojis and flipcount
+        
+        
+    }
+    
+    
     }
 
