@@ -20,7 +20,7 @@ class ViewController: UIViewController
     //the lazy var allows us to wait to initilise this var until cardButtons has been initialised
     //a lazy var cannot have property observer
     
-
+    
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
     
     //you can add a property observer to any property to update and execute code e.g. didSet
@@ -44,9 +44,9 @@ class ViewController: UIViewController
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-       
+        
         //the index of sender unwraps the optional
-       // add an if here because index of returns an optional. So if optional is not set (nil) program won't crash
+        // add an if here because index of returns an optional. So if optional is not set (nil) program won't crash
         //we have re-written this from Lecture 1 to allow the model handle what happens when a card is chosen
         //now we need to update view with the model
         
@@ -78,9 +78,21 @@ class ViewController: UIViewController
         }
     }
     
+    // var emojiChoices = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
+        
+    let halloweenTheme = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
     
-    var emojiChoices = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
-
+    let animalsTheme = ["🦁", "🐸", "🐝" ,"🦋", "🐙", "🦈", "🐻", "🐞"]
+    
+    let christmasTheme = ["⛄️", "🥃", "🎄", "🎅🏻", "🎁", "🦌", "⛷", "🦃"]
+    
+    let natureTheme = ["🌈", "🌵", "🍄", "🌸", "☀️", "❄️", "🍁", "🐚"]
+    
+    let flagsTheme = ["🇮🇪", "🇬🇧", "🇳🇴", "🇨🇭", "🇫🇷", "🇮🇳", "🇪🇸", "🇧🇬"]
+    
+    let foodTheme = ["🍏", "🍊", "🍓", "🍋", "🍉", "🍇", "🍍", "🥕"]
+    
+    
     //we are going to use a dictionary for this. a dictionary is a data structure where you can look something up and retireve a value
     //here we have defined a dictionary. You specify the key (int) and the value (string):
     
@@ -97,11 +109,16 @@ class ViewController: UIViewController
         //but randomIndex is an unsigned int nit an int!! so also need to convert whole thing
         // here are two ifs together - if the index is nil and there are emojis left in the array, choose an emji, remove it from the array and put in dictionaryß
         
-            if emoji[card.identifier] == nil , emojiChoices.count > 0 {
-                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-                emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
-            }
-            
+        let themes: [[String]] = [halloweenTheme, animalsTheme, christmasTheme, natureTheme, flagsTheme, foodTheme]
+        
+        var emojiChoices = themes.randomElement()!
+        print(emojiChoices)
+        
+        if emoji[card.identifier] == nil , emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        
         //Note looking something up in a dictionary returns an optional - this is because what we have looked up may not be there
         // we could use if let here to deal with the optional but instead we are going to check if the result of looking up the dictionary is nil before we return anything
         //below is a special operator instead of using if else because it's so commonly used
@@ -109,13 +126,12 @@ class ViewController: UIViewController
         
         return emoji[card.identifier] ?? "?"
         
-        }
+    }
     
     @IBAction func resetGame(_ sender: UIButton) {
         //some code that resets the game
-
+        
         game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
-        emojiChoices = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
         flipCount = 0
         updateViewFromModel()
         //need to reset: game, emojis and flipcount
@@ -124,5 +140,5 @@ class ViewController: UIViewController
     }
     
     
-    }
+}
 

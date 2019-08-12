@@ -23,11 +23,12 @@ class Concentration {
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
-
+        
         //! = opposite of the statement
         //if the card you have chosen is not already matched then do this
         
         if !cards[index].isMatched{
+            
             // this is saying if a variable called matchIndex
             // and  index does not equal matchIndex - i.e. you haven't touched the same card
             
@@ -41,7 +42,7 @@ class Concentration {
                 }
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = nil
-           
+                
             } else {
                 
                 // either no cards or 2 cards are face up
@@ -60,16 +61,15 @@ class Concentration {
     
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
-           let card = Card()
+            let card = Card()
             cards += [card, card]
             
             // this shuffles the array:
-
+            
             cards.shuffle()
-        
+            
         }
-        
-        // TODO: add a reset game button
     }
+    
     
 }
