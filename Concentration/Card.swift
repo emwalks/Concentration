@@ -13,15 +13,16 @@ import Foundation
 
 struct Card {
     
+    //at the moment these need to be public
     var isFaceUp = false
     var isMatched = false
     var identifier: Int
     
     //although the static func and var are in the type Card, they will not be passed to an instance of a card. they are utility/global functions
     
-    static var identifierFactory = 0
+    private static var identifierFactory = 0
     
-    static func getUniqueIdentifier() -> Int {
+    private static func getUniqueIdentifier() -> Int {
         Card.identifierFactory += 1
         return Card.identifierFactory
     }

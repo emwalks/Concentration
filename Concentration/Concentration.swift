@@ -5,7 +5,7 @@
 //  Created by Emma Walker - TVandMobile Platforms - Core Engineering on 02/08/2019.
 //  Copyright © 2019 Emma Walker - TVandMobile Platforms - Core Engineering. All rights reserved.
 //
-// this is going to be our Model
+// this is going to be our Model and intended to be used by a view controller
 
 import Foundation
 
@@ -15,7 +15,9 @@ import Foundation
 
 class Concentration {
     
-    var cards = [Card]()
+    //cards has to be public but their properties are managed in the model
+    
+    private (set) var cards = [Card]()
     
     //this var is to keep track of when only one card is face up
     //this is optional because if there are more than one single card face up the index will be nil
@@ -25,7 +27,7 @@ class Concentration {
     //otherwise set indexOfOneAndOnlyFaceUpCard = foundIndex
     //once this has been returned then set the index as isFaceUp
     
-    var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -46,7 +48,13 @@ class Concentration {
         }
     }
     
+    //this is the fundamental API and so has to be public
+    //another way to protect your API is using assertions
+    //if the card indices do not contain this index - crash and give this message:
+    
     func chooseCard(at index: Int) {
+        
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in cards")
         
         //! = opposite of the statement
         //if the card you have chosen is not already matched then do this
@@ -75,6 +83,9 @@ class Concentration {
     //because we are passing structs around we are already copying cards so we only need a card, not a second matching card. And we can pass two into the array (which again is a struct which will be copied.
     
     init(numberOfPairsOfCards: Int) {
+       
+        assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): you must have at lease one pair of cards")
+
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]

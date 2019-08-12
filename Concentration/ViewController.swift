@@ -20,28 +20,32 @@ class ViewController: UIViewController
     //the lazy var allows us to wait to initilise this var until cardButtons has been initialised
     //a lazy var cannot have property observer
     
+    //this is our model. Often view controllers models are public
+    // i.e. you give a model to a view controller and it displays it
+    //however in this case we want it to be private because number of pairs of cards in the game is tied to the UI
+    //to make it usable and public we would need to define numberOfPairsOfCards in another way
     
-    lazy var game: Concentration =
+    private lazy var game: Concentration =
         Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     //this is a computed property that is read only. If it is "get" only you do not need the get syntax
+    //this can be public because it is read only
     
     var numberOfPairsOfCards: Int{
         return (cardButtons.count+1)/2
         
     }
     
-    
-    
     //you can add a property observer to any property to update and execute code e.g. didSet
+    //
     
-    var flipCount = 0 {
+    private (set) var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
     
     // @IBAction is a directive connecting method to UI
     //func touchCard is a method called touchCard with argument sender
@@ -50,9 +54,9 @@ class ViewController: UIViewController
     //if the method had a return value it's syntax would be:
     //func touchCard(_ sender: UIButton) -> Int {}
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         
         //the index of sender unwraps the optional
@@ -71,7 +75,7 @@ class ViewController: UIViewController
     //indices gives a countable range from the array
     //this func is going to look at the array of cards in Concentration and make sure the card buttons match in the UI based on game parameters
     
-    func updateViewFromModel(){
+    private func updateViewFromModel(){
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -88,29 +92,29 @@ class ViewController: UIViewController
         }
     }
     
-   
-    let halloweenTheme = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
-
-    let animalsTheme = ["🦁", "🐸", "🐝" ,"🦋", "🐙", "🦈", "🐻", "🐞"]
-
-    let christmasTheme = ["⛄️", "🥃", "🎄", "🎅🏻", "🎁", "🦌", "⛷", "🦃"]
-
-    let natureTheme = ["🌈", "🌵", "🍄", "🌸", "☀️", "❄️", "🍁", "🐚"]
-
-    let flagsTheme = ["🇮🇪", "🇬🇧", "🇳🇴", "🇨🇭", "🇫🇷", "🇮🇳", "🇪🇸", "🇧🇬"]
-
-    let foodTheme = ["🍏", "🍊", "🍓", "🍋", "🍉", "🍇", "🍍", "🥕"]
     
-    lazy var themes: [[String]] = [halloweenTheme, animalsTheme, christmasTheme, natureTheme, flagsTheme, foodTheme]
+    private let halloweenTheme = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
     
-    lazy var emojiChoices = themes.randomElement()!
+    private let animalsTheme = ["🦁", "🐸", "🐝" ,"🦋", "🐙", "🦈", "🐻", "🐞"]
+    
+    private let christmasTheme = ["⛄️", "🥃", "🎄", "🎅🏻", "🎁", "🦌", "⛷", "🦃"]
+    
+    private let natureTheme = ["🌈", "🌵", "🍄", "🌸", "☀️", "❄️", "🍁", "🐚"]
+    
+    private let flagsTheme = ["🇮🇪", "🇬🇧", "🇳🇴", "🇨🇭", "🇫🇷", "🇮🇳", "🇪🇸", "🇧🇬"]
+    
+    private let foodTheme = ["🍏", "🍊", "🍓", "🍋", "🍉", "🍇", "🍍", "🥕"]
+    
+    private lazy var themes: [[String]] = [halloweenTheme, animalsTheme, christmasTheme, natureTheme, flagsTheme, foodTheme]
+    
+    private lazy var emojiChoices = themes.randomElement()!
     
     //we are going to use a dictionary for this. a dictionary is a data structure where you can look something up and retireve a value
     //here we have defined a dictionary. You specify the key (int) and the value (string):
     
-    var emoji = [Int:String]()
+    private var emoji = [Int:String]()
     
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         
         // we are going to populate our dictionary with emojis as they are called for
         //arc4random_uniform is a pseudo random number generator from zero up to the upper bound 32 bit unsigned integer (UInt32) not inclusive of the upper bound number
@@ -120,7 +124,7 @@ class ViewController: UIViewController
         //UInt32 is a struct with an initialiser that takes an int
         //but randomIndex is an unsigned int nit an int!! so also need to convert whole thing
         // here are two ifs together - if the index is nil and there are emojis left in the array, choose an emji, remove it from the array and put in dictionaryß
-
+        
         if emoji[card.identifier] == nil , emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
@@ -136,14 +140,14 @@ class ViewController: UIViewController
         
     }
     
-    @IBAction func resetGame(_ sender: UIButton) {
+    @IBAction private func resetGame(_ sender: UIButton) {
         //need to reset: game, emojis and flipcount
         
         game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
         flipCount = 0
         emojiChoices = themes.randomElement()!
         updateViewFromModel()
-      
+        
         
         
     }
