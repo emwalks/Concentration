@@ -125,6 +125,7 @@ class ViewController: UIViewController
         //but randomIndex is an unsigned int nit an int!! so also need to convert whole thing
         // here are two ifs together - if the index is nil and there are emojis left in the array, choose an emji, remove it from the array and put in dictionaryß
         
+        
         if emoji[card.identifier] == nil , emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
