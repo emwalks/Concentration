@@ -13,7 +13,7 @@ import Foundation
 // what does the model of the game concentration look like? i.e. what is our application?
 // it is likely to have an array of cards and will need a method that allows you to choose a card
 
-class Concentration {
+struct Concentration {
     
     //cards has to be public but their properties are managed in the model
     
@@ -52,7 +52,7 @@ class Concentration {
     //another way to protect your API is using assertions
     //if the card indices do not contain this index - crash and give this message:
     
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
         
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in cards")
         
@@ -68,7 +68,7 @@ class Concentration {
                 
                 //check if cards match and then mark as matched
                 
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }

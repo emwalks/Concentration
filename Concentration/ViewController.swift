@@ -112,7 +112,7 @@ class ViewController: UIViewController
     //we are going to use a dictionary for this. a dictionary is a data structure where you can look something up and retireve a value
     //here we have defined a dictionary. You specify the key (int) and the value (string):
     
-    private var emoji = [Int:String]()
+    private var emoji = [Card:String]()
     
     private func emoji(for card: Card) -> String {
         
@@ -125,9 +125,13 @@ class ViewController: UIViewController
         //but randomIndex is an unsigned int nit an int!! so also need to convert whole thing
         // here are two ifs together - if the index is nil and there are emojis left in the array, choose an emji, remove it from the array and put in dictionaryß
         
+        //we have removed the .identifer because we would like the card to  be the identifier
+        //use Card directly as the key into our emoji doctioary
+        //by making card hashable we can compare Cards directly since they will bwe equatable
         
-        if emoji[card.identifier] == nil , emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+        
+        if emoji[card] == nil , emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
             print(emojiChoices)
         }
         
@@ -136,8 +140,9 @@ class ViewController: UIViewController
         //below is a special operator instead of using if else because it's so commonly used
         // This says return  emoji[card.identifier] but if it’s nil return "?":
         
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
+    
     
     @IBAction private func resetGame(_ sender: UIButton) {
         //need to reset: game, emojis and flipcount

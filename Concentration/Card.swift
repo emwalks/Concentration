@@ -11,12 +11,23 @@ import Foundation
 //struct in similar to a class except it has no inheritence and will always get copied - not a reference type, is a value type
 //this is the model of the card i.e. how it works not how it looks
 
-struct Card {
+struct Card: Hashable
+
+    //this var and func make our Card hashable and equatable
+    
+{
+    var hashValue: Int {return identifier}
+    
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
     
     //at the moment these need to be public
     var isFaceUp = false
     var isMatched = false
-    var identifier: Int
+    
+    //now int can be private as the Card handles it
+    private var identifier: Int
     
     //although the static func and var are in the type Card, they will not be passed to an instance of a card. they are utility/global functions
     
