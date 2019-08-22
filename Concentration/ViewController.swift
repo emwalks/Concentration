@@ -37,15 +37,28 @@ class ViewController: UIViewController
     }
     
     //you can add a property observer to any property to update and execute code e.g. didSet
-    //
+    //the initialisation does not envoke the didSet so set the 
     
     private (set) var flipCount = 0 {
         didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
+            updateFlipCountLabel()
         }
     }
     
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    private func updateFlipCountLabel() {
+        let attributes:[NSAttributedString.Key:Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
+    }
+    
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
     // @IBAction is a directive connecting method to UI
     //func touchCard is a method called touchCard with argument sender
