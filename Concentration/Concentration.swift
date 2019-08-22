@@ -29,17 +29,13 @@ struct Concentration {
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            
+            //this is an array of index which is int : cards.indices.filter {cards[$0].isFaceUp}
+            //oneAndOnly is a var we have used to extend
+            
+            return cards.indices.filter {cards[$0].isFaceUp}.oneAndOnly
+            
+            
         }
         set {
             for index in cards.indices{
@@ -96,6 +92,16 @@ struct Concentration {
             
         }
     }
-    
-    
 }
+
+//This extends anything that is a collection - string, array, dictionary etc
+    extension Collection {
+        var oneAndOnly: Element? {
+            
+            //this is a ternary operator
+            //this method returns the one and only thing in the collection or it ereturns nil
+            //count and first are collection methods
+            return count == 1 ? first :nil
+        }
+    }
+
