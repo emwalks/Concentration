@@ -59,6 +59,29 @@ class ViewController: UIViewController
             updateFlipCountLabel()
         }
     }
+
+    private (set) var scoreCount = 0 {
+        didSet {
+            updateScoreCountLabel()
+        }
+    }
+    
+    private func updateScoreCountLabel() {
+        let attributes:[NSAttributedString.Key:Any] = [
+            .strokeWidth: 5.0,
+            .strokeColor: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Score: \(flipCount)", attributes: attributes)
+        scoreCountLabel.attributedText = attributedString
+    }
+    
+ 
+    @IBOutlet private weak var scoreCountLabel: UILabel!{
+        didSet {
+            updateScoreCountLabel()
+        }
+    }
+    
     
     // @IBAction is a directive connecting method to UI
     //func touchCard is a method called touchCard with argument sender
@@ -71,6 +94,7 @@ class ViewController: UIViewController
     
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
+        scoreCount += 1
         
         //the index of sender unwraps the optional
         // add an if here because index of returns an optional. So if optional is not set (nil) program won't crash
@@ -162,6 +186,7 @@ class ViewController: UIViewController
         
         game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
         flipCount = 0
+        scoreCount = 0
         emojiChoices = themes.randomElement()!
         updateViewFromModel()
         

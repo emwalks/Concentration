@@ -183,8 +183,14 @@
                                     <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UYO-FL-xf7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-TN-B1c">
-                                <rect key="frame" x="173" y="770" width="68.5" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-TN-B1c">
+                                <rect key="frame" x="20" y="776" width="68.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I47-3A-10b">
+                                <rect key="frame" x="311.5" y="776" width="82.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -192,20 +198,27 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4X4-sq-nlO" firstAttribute="top" secondItem="VLb-TN-B1c" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ca-0E-OqX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I47-3A-10b" secondAttribute="trailing" constant="20" id="1nv-oE-TDD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4X4-sq-nlO" secondAttribute="bottom" id="68u-oH-xaT"/>
                             <constraint firstItem="qg7-SC-w5N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9rh-kv-XD9"/>
+                            <constraint firstItem="VLb-TN-B1c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Dbz-sx-0Wy"/>
                             <constraint firstItem="4X4-sq-nlO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qg7-SC-w5N" secondAttribute="bottom" constant="8" symbolic="YES" id="NdR-yh-IYU"/>
-                            <constraint firstItem="VLb-TN-B1c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="TKT-qp-hHW"/>
-                            <constraint firstItem="VLb-TN-B1c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qg7-SC-w5N" secondAttribute="bottom" constant="8" symbolic="YES" id="gkg-Jq-fc7"/>
+                            <constraint firstItem="VLb-TN-B1c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y5a-DJ-7Nv"/>
+                            <constraint firstItem="I47-3A-10b" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qg7-SC-w5N" secondAttribute="bottom" constant="8" symbolic="YES" id="bfP-Z1-5jb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VLb-TN-B1c" secondAttribute="bottom" constant="50" id="iTp-Ih-NAG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I47-3A-10b" secondAttribute="bottom" constant="50" id="jh3-CK-J9V"/>
                             <constraint firstItem="qg7-SC-w5N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="meU-yI-pGR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VLb-TN-B1c" secondAttribute="trailing" constant="200" id="mtH-UI-aHc"/>
+                            <constraint firstItem="I47-3A-10b" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="200" id="nNm-rQ-9sc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qg7-SC-w5N" secondAttribute="trailing" constant="16" id="nlC-Q0-3rA"/>
+                            <constraint firstItem="VLb-TN-B1c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qg7-SC-w5N" secondAttribute="bottom" constant="8" symbolic="YES" id="pDi-Yn-zlQ"/>
                             <constraint firstItem="4X4-sq-nlO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wsz-6E-Nqs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="VLb-TN-B1c" id="S1g-Hc-ZMP"/>
+                        <outlet property="scoreCountLabel" destination="I47-3A-10b" id="2QY-Gu-XWJ"/>
                         <outletCollection property="cardButtons" destination="3J5-1e-gHH" collectionClass="NSMutableArray" id="3YO-Vd-6PW"/>
                         <outletCollection property="cardButtons" destination="uMF-M0-TG9" collectionClass="NSMutableArray" id="fEg-Gj-t0m"/>
                         <outletCollection property="cardButtons" destination="bSS-OQ-hY1" collectionClass="NSMutableArray" id="Jjs-B6-BF5"/>
