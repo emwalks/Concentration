@@ -18,6 +18,7 @@ struct Card: Hashable
     
     var isFaceUp = false
     var isMatched = false
+    var hasBeenFaceUp = false
     
     private var identifier: Int
     
@@ -33,4 +34,10 @@ struct Card: Hashable
     }
     
 }
+
+// here we have created and object (a card) that has been made hashable - i.e. able to have a key
+// it has the following properties; isFaceUp, isMatched, an identifier number, and an identifier factory number that starts as 0
+// it has a function that creates a unique identifier and updates the indetifier factroy number
+// when initialised the proprty identifier gets set using the function
+
 
