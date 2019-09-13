@@ -10,7 +10,7 @@ import UIKit
 
 //this is the controller in MVC principles
 
-class ViewController: UIViewController
+class ConcentrationViewController: UIViewController
 {
    // this sets a property of type Concentration game and the argument number of Pairs of Cards comes from the var numberOfPairsOfCards
     
@@ -116,6 +116,16 @@ class ViewController: UIViewController
                     scoreCount -= 1
                 }
             }
+        }
+    }
+    
+    //going to add a theme picker
+    
+    var theme: Array<String>? {
+        didSet{
+            emojiChoices = theme ?? [""]
+            emoji = [:]
+            updateViewFromModel()
         }
     }
     
