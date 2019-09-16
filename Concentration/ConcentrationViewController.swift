@@ -158,7 +158,7 @@ class ConcentrationViewController: UIViewController
         game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
         flipCount = 0
         scoreCount = 0
-        emojiChoices = theme ?? ""
+        emojiChoices = theme ?? "👻🎃🦇😈🤡☠️🧙‍♀️👹"
         updateViewFromModel()
         
     }

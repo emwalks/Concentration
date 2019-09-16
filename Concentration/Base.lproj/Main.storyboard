@@ -28,7 +28,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Halloween"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="6Vo-vf-IG2"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="Oth-wl-LxH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aam-Jx-W9f">
@@ -37,7 +37,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Animals"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="tgx-ph-mqA"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="VN9-MW-pdG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iH2-pA-p8n">
@@ -46,7 +46,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Christmas"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="S9Y-0S-Lmf"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="wS1-pO-Fw0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLe-m4-kBb">
@@ -55,7 +55,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Nature"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="yub-RD-u4v"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="kWj-wV-IBI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="087-c1-YR0">
@@ -64,7 +64,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Flags"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="18C-1z-oF7"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="ea7-4p-YiW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9Q-XI-GvN">
@@ -73,7 +73,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Food"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="cSs-I4-JLD"/>
+                                            <action selector="changeTheme:" destination="xlz-5R-tlT" eventType="touchUpInside" id="Vyf-bA-uue"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -89,6 +89,9 @@
                     <navigationItem key="navigationItem" title="Choose a Theme:" id="fbJ-78-9Ll">
                         <barButtonItem key="backBarButtonItem" title="Back" id="wF4-0f-o0w"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Choose Theme" id="6wW-hh-LRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNz-sn-ijZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,6 +360,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OOu-Eb-Y8B"/>
+        <segue reference="6wW-hh-LRo"/>
     </inferredMetricsTieBreakers>
 </document>
