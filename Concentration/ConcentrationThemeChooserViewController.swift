@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConcentrationThemeChooserViewController: UIViewController {
+class ConcentrationThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
     
     let themes = [
         "Halloween":"👻🎃🦇😈🤡☠️🧙‍♀️👹",
@@ -23,6 +23,27 @@ class ConcentrationThemeChooserViewController: UIViewController {
         
         "Food":"🍏🍊🍓🍋🍉🍇🍍🥕",
     ]
+    
+    override func awakeFromNib() {
+        splitViewController?.delegate = self
+    }
+    
+    // when we implemented split view, on the iphone, the detail automatically comes up - i.e. the game rather than the themes
+    // this
+    // we return true when we don't want the secondary to collapse e.g. then there is no theme selected!
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController: UIViewController,
+        onto primaryViewController: UIViewController)
+        -> Bool {
+            if let cvc = secondaryViewController as? ConcentrationViewController {
+                if cvc.theme == nil {
+                    return true
+                }
+            }
+            return false
+    }
+    
     
     //manual segue in code rather than in mainstoryboard
     //still need to add single segue from view controller to view controller
