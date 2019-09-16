@@ -33,7 +33,7 @@ class ConcentrationViewController: UIViewController
     private func updateFlipCountLabel() {
         let attributes:[NSAttributedString.Key:Any] = [
             .strokeWidth: 5.0,
-            .strokeColor: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+            .strokeColor: #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         ]
         let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
         flipCountLabel.attributedText = attributedString
@@ -57,7 +57,7 @@ class ConcentrationViewController: UIViewController
     private func updateScoreCountLabel() {
         let attributes:[NSAttributedString.Key:Any] = [
             .strokeWidth: 5.0,
-            .strokeColor: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+            .strokeColor: #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         ]
         let attributedString = NSAttributedString(string: "Score: \(scoreCount)", attributes: attributes)
         scoreCountLabel.attributedText = attributedString
@@ -107,7 +107,7 @@ class ConcentrationViewController: UIViewController
                 //more later
                 button.setTitle("", for: UIControl.State.normal)
                                 
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
                 if card.isMatched{
                     scoreCount += 1
                 }
