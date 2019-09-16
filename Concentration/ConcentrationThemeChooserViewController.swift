@@ -26,17 +26,16 @@ class ConcentrationThemeChooserViewController: UIViewController {
     
     // MARK: - Navigation
     
-    //the sender is the thing causeing the segue - in the case the buttons in the stack
+    //the sender is the thing causing the segue - in the case the buttons in the stack
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Choose Theme" {
             //because the sender is an Any optional we need to set it to a button then we can use it (cant do sender.currentTitle)
-                if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
-                    if let cvc = segue.destination as? ConcentrationViewController {
-                        cvc.theme = theme
-                    }
+            if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                //here we use as? to downcast to use ConcentrationViewController
+                if let cvc = segue.destination as? ConcentrationViewController {
+                    cvc.theme = theme
+                }
             }
         }
     }
-    
-    
 }
