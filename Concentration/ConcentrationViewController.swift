@@ -12,7 +12,7 @@ import UIKit
 
 class ConcentrationViewController: UIViewController
 {
-   // this sets a property of type Concentration game and the argument number of Pairs of Cards comes from the var numberOfPairsOfCards
+    // this sets a property of type Concentration game and the argument number of Pairs of Cards comes from the var numberOfPairsOfCards
     
     private lazy var game: Concentration =
         Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
@@ -45,7 +45,7 @@ class ConcentrationViewController: UIViewController
             updateFlipCountLabel()
         }
     }
-   
+    
     // this is the scorecount label itself which calls the function above
     private (set) var scoreCount = 0 {
         didSet {
@@ -59,8 +59,10 @@ class ConcentrationViewController: UIViewController
             .strokeWidth: 5.0,
             .strokeColor: #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         ]
-        let attributedString = NSAttributedString(string: "Score: \(scoreCount)", attributes: attributes)
-        scoreCountLabel.attributedText = attributedString
+        if scoreCountLabel != nil {
+            let attributedString = NSAttributedString(string: "Score: \(scoreCount)", attributes: attributes)
+            scoreCountLabel.attributedText = attributedString
+        }
     }
     
     //this is the scorecounter itself
@@ -96,24 +98,26 @@ class ConcentrationViewController: UIViewController
     
     private func updateViewFromModel(){
         scoreCount = 0
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControl.State.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            } else {
-                //UIControl.State.normal this is talking about the action on the button
-                //more later
-                button.setTitle("", for: UIControl.State.normal)
-                                
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
-                if card.isMatched{
-                    scoreCount += 1
-                }
-                
-                if card.hasBeenFaceUp {
-                    scoreCount -= 1
+        if cardButtons != nil {
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp {
+                    button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                    button.backgroundColor = #colorLiteral(red: 0.9667676091, green: 0.9733269811, blue: 0.8910626173, alpha: 1)
+                } else {
+                    //UIControl.State.normal this is talking about the action on the button
+                    //more later
+                    button.setTitle("", for: UIControl.State.normal)
+                    
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0) : #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+                    if card.isMatched{
+                        scoreCount += 1
+                    }
+                    
+                    if card.hasBeenFaceUp {
+                        scoreCount -= 1
+                    }
                 }
             }
         }
@@ -121,32 +125,17 @@ class ConcentrationViewController: UIViewController
     
     //going to add a theme picker
     
-    var theme: Array<String>? {
+    var theme: String? {
         didSet{
-            emojiChoices = theme ?? [""]
+            emojiChoices = theme ?? ""
             emoji = [:]
             updateViewFromModel()
         }
     }
     
     
-    private let halloweenTheme = ["👻", "🎃", "🦇" ,"😈", "🤡", "☠️", "🧙‍♀️", "👹"]
     
-    private let animalsTheme = ["🦁", "🐸", "🐝" ,"🦋", "🐙", "🦈", "🐻", "🐞"]
-    
-    private let christmasTheme = ["⛄️", "🥃", "🎄", "🎅🏻", "🎁", "🦌", "⛷", "🦃"]
-    
-    private let natureTheme = ["🌈", "🌵", "🍄", "🌸", "☀️", "❄️", "🍁", "🐚"]
-    
-    private let flagsTheme = ["🇮🇪", "🇬🇧", "🇳🇴", "🇨🇭", "🇫🇷", "🇮🇳", "🇪🇸", "🇧🇬"]
-    
-    private let foodTheme = ["🍏", "🍊", "🍓", "🍋", "🍉", "🍇", "🍍", "🥕"]
-    
-    // this is an array of arrays of strings
-    private lazy var themes: [[String]] = [halloweenTheme, animalsTheme, christmasTheme, natureTheme, flagsTheme, foodTheme]
-    
-    // this chooses one element (array) at "random" from the array of arrays
-    private lazy var emojiChoices = themes.randomElement()!
+    private lazy var emojiChoices = "👻🎃🦇😈🤡☠️🧙‍♀️👹"
     
     // this is a dictionary called emoji. The dictionary is made up of keys which are cards and associated strings
     private var emoji = [Card:String]()
@@ -155,21 +144,21 @@ class ConcentrationViewController: UIViewController
     // if the dictionary emoji above is empty (?) and emojiChoices > 0 (i.e. there are emojis left in the array) then an emoji is placed in the string element of the dictionary and removed from the emojiChoices array at "random" using the extension below
     // then the emoji is returned or the sring ? is returned i.e. all emojis used up
     private func emoji(for card: Card) -> String {
-  
+        
         if emoji[card] == nil , emojiChoices.count > 0 {
-            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
-            print(emojiChoices)
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
-       
+        
         return emoji[card] ?? "?"
     }
     
     @IBAction private func resetGame(_ sender: UIButton) {
-      
+        
         game = Concentration(numberOfPairsOfCards: (cardButtons.count+1)/2)
         flipCount = 0
         scoreCount = 0
-        emojiChoices = themes.randomElement()!
+        emojiChoices = theme ?? ""
         updateViewFromModel()
         
     }

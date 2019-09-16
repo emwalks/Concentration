@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Concentration Theme Chooser View Controller-->
+        <!--Choose a Theme:-->
         <scene sceneID="1sy-iQ-Xaz">
             <objects>
                 <viewController id="xlz-5R-tlT" customClass="ConcentrationThemeChooserViewController" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,7 +86,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F7g-6h-qKU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fbJ-78-9Ll"/>
+                    <navigationItem key="navigationItem" title="Choose a Theme:" id="fbJ-78-9Ll">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="wF4-0f-o0w"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNz-sn-ijZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

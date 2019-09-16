@@ -9,16 +9,34 @@
 import UIKit
 
 class ConcentrationThemeChooserViewController: UIViewController {
-
-
-    /*
+    
+    let themes = [
+        "Halloween":"👻🎃🦇😈🤡☠️🧙‍♀️👹",
+        
+        "Animals":"🦁🐸🐝🦋🐙🦈🐻🐞",
+        
+        "Christmas":"⛄️🥃🎄🎅🏻🎁🦌⛷🦃",
+        
+        "Nature":"🌈🌵🍄🌸☀️❄️🍁🐚",
+        
+        "Flags":"🇮🇪🇬🇧🇳🇴🇨🇭🇫🇷🇮🇳🇪🇸🇧🇬",
+        
+        "Food":"🍏🍊🍓🍋🍉🍇🍍🥕",
+    ]
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    //the sender is the thing causeing the segue - in the case the buttons in the stack
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Choose Theme" {
+            //because the sender is an Any optional we need to set it to a button then we can use it (cant do sender.currentTitle)
+                if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
+                    if let cvc = segue.destination as? ConcentrationViewController {
+                        cvc.theme = theme
+                    }
+            }
+        }
     }
-    */
-
+    
+    
 }
