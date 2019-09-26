@@ -29,7 +29,6 @@ class ConcentrationThemeChooserViewController: UIViewController, UISplitViewCont
     }
     
     // when we implemented split view, on the iphone, the detail automatically comes up - i.e. the game rather than the themes
-    // this
     // we return true when we don't want the secondary to collapse e.g. then there is no theme selected!
     func splitViewController(
         _ splitViewController: UISplitViewController,
