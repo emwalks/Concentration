@@ -10,8 +10,13 @@ import UIKit
 
 //this is the controller in MVC principles
 
-class ConcentrationViewController: UIViewController
+class ConcentrationViewController: VCLoggingViewController //UIViewController
 {
+    override var vclLoggingName: String {
+        //now in the console Game will be printed instead of ConcentrationViewController
+        return "Game"
+    }
+    
     // this sets a property of type Concentration game and the argument number of Pairs of Cards comes from the var numberOfPairsOfCards
     
     private lazy var game: Concentration =
