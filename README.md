@@ -8,7 +8,7 @@ This repo keeps track of my progress following Stanford's CS193P course (resourc
 
 ### Project 1: Creating a card flipping game to match pairs
 
-Created in Xcode 10.
+Created in Xcode 10.2
 
 Techniques implemented include:
 
